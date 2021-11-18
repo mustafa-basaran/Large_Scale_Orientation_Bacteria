@@ -1,0 +1,99 @@
+////////////////////////////////////////////////////////////////////////////
+// 
+//   gro 
+// 
+//   Copyright (c) 2011-2012 Eric Klavins, University of Washington
+//   For more information, email klavins@uw.edu
+// 
+//   This program is free software; you can redistribute it and/or
+//   modify it under the terms of the GNU General Public License
+//   as published by the Free Software Foundation; either version 2
+//   of the License, or (at your option) any later version.
+// 
+//   This program is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//   GNU General Public License for more details.
+// 
+//   You should have received a copy of the GNU General Public License
+//   along with this program; if not, write to the Free Software
+//   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+// 
+// 
+
+include gro
+set ( "dt",0.0625);
+set ( "population_max", 20000 );
+path := "./multinew/collision_deneme_r3g3_tangential";
+fp := fopen ( "./multinew/collision_deneme_r3g3_tangential.csv", "w" );
+
+program p(c) := {
+  rfp := 0;  
+  gfp := 0;
+  r := [ t := 0.0 , color_type := c ];
+  r.t = 100.0 & r.color_type = 0 : { r.color_type := (rand(2)+1);}
+  true : { r.t := r.t + 0.0625;}
+   r.color_type = 1 :{ gfp := volume*50;
+					  set ( "ecoli_division_size_mean", 3.0 ); 
+					  set ( "ecoli_division_size_var", 0.01 );}
+  r.color_type = 2 :{ rfp := volume*50;
+					  set ( "ecoli_division_size_mean", 4.5 ); 
+					  set ( "ecoli_division_size_var", 0.01 );}
+};
+
+program main() := {
+  t := 0;
+  snapt :=0;
+  n := 1;
+  dt := 0.0625;
+  true : { t := t + dt;
+  snapt := snapt +dt;}	
+  snapt = 1 :{ 
+    dump(fp);
+    snapshot(path<>tostring(n)<>"at"<>tostring(t)<>".bmp");
+    snapt := 0;
+  }
+
+  t > 220.0  & n<26: { 
+    dump(fp);
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>"final.bmp");
+	n := n+1;
+	reset();
+	set ( "dt",0.0625);
+set ( "population_max", 10000 );
+ecoli ( [ x := 400,y := 0,theta := 1.5708,volume := 2 ], program p(2) ); 
+ecoli ( [ x := 346.4102,y := 200,theta := 2.0944,volume := 2 ], program p(1) );
+ecoli ( [ x := 200,y := 346.4102,theta := 2.618,volume := 2 ], program p(2) );
+ecoli ( [ x := 0,y := 400,theta := 3.1416,volume := 2 ], program p(1) ); 
+ecoli ( [ x := -200,y := 346.4102,theta := 3.6652,volume := 2 ], program p(2) );
+ecoli ( [ x := -346.4102,y := 200,theta := 4.1888,volume := 2 ], program p(1) ); 
+ecoli ( [ x := -400,y := 0,theta := 4.7124,volume := 2 ], program p(2) );
+ecoli ( [ x := -346.4102,y := -200,theta := 5.236,volume := 2 ], program p(1) ); 
+ecoli ( [ x := -200,y := -346.4102,theta := 5.7596,volume := 2 ], program p(2) );
+ecoli ( [ x := 0,y := -400,theta := 6.2832,volume := 2 ], program p(1) ); 
+ecoli ( [ x := 200,y := -346.4102,theta := 6.8068,volume := 2 ], program p(2) );
+ecoli ( [ x := 346.4102,y := -200,theta := 7.3304,volume := 2 ], program p(1) );
+
+
+   start(),
+    t := 0;
+  }
+  
+};
+
+
+ecoli ( [ x := 400,y := 0,theta := 1.5708,volume := 2 ], program p(2) ); 
+ecoli ( [ x := 346.4102,y := 200,theta := 2.0944,volume := 2 ], program p(1) );
+ecoli ( [ x := 200,y := 346.4102,theta := 2.618,volume := 2 ], program p(2) );
+ecoli ( [ x := 0,y := 400,theta := 3.1416,volume := 2 ], program p(1) ); 
+ecoli ( [ x := -200,y := 346.4102,theta := 3.6652,volume := 2 ], program p(2) );
+ecoli ( [ x := -346.4102,y := 200,theta := 4.1888,volume := 2 ], program p(1) ); 
+ecoli ( [ x := -400,y := 0,theta := 4.7124,volume := 2 ], program p(2) );
+ecoli ( [ x := -346.4102,y := -200,theta := 5.236,volume := 2 ], program p(1) ); 
+ecoli ( [ x := -200,y := -346.4102,theta := 5.7596,volume := 2 ], program p(2) );
+ecoli ( [ x := 0,y := -400,theta := 6.2832,volume := 2 ], program p(1) ); 
+ecoli ( [ x := 200,y := -346.4102,theta := 6.8068,volume := 2 ], program p(2) );
+ecoli ( [ x := 346.4102,y := -200,theta := 7.3304,volume := 2 ], program p(1) );
+
+
+

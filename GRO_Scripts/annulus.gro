@@ -1,0 +1,134 @@
+////////////////////////////////////////////////////////////////////////////
+// 
+//   gro 
+// 
+//   Copyright (c) 2011-2012 Eric Klavins, University of Washington
+//   For more information, email klavins@uw.edu
+// 
+//   This program is free software; you can redistribute it and/or
+//   modify it under the terms of the GNU General Public License
+//   as published by the Free Software Foundation; either version 2
+//   of the License, or (at your option) any later version.
+// 
+//   This program is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//   GNU General Public License for more details.
+// 
+//   You should have received a copy of the GNU General Public License
+//   along with this program; if not, write to the Free Software
+//   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+// 
+// 
+
+include gro
+set ( "dt",0.0625);
+set ( "population_max", 10000 );
+set ( "ecoli_division_size_mean", 3.142 );
+set ( "ecoli_division_size_var", 0.01 );
+path := "./annullusupdatednew_initfrom12bac_";
+fp := fopen ( "./annulus_updated_initfrom12bac_datas.csv", "w" );
+
+program p(c) := {
+  rfp := 0;  
+  gfp := 0;
+  r := [ t := 0.0 , color_type := c ];
+  true : { r.t := r.t + 0.0625;}
+};
+
+
+program main() := {
+  t := 0;
+  n := 0;
+  j := 0;
+  true : { t := t + dt;
+  	   j := j+1;}
+  	       j = 16*105  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+      j = 16*110  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+        j = 16*112.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+      j = 16*115  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+          j = 16*117.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+      j = 16*120  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+          j = 16*122.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+    j = 16*125  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+          j = 16*127.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+    j = 16*130  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+          j = 16*132.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+    j = 16*135  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+          j = 16*137.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+      j = 16*140  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+            j = 16*142.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+      j = 16*145  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+            j = 16*147.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+      j = 16*150  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+            j = 16*152.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+        j = 16*155  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+            j = 16*157.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+          j = 16*160  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+            j = 16*162.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+
+  t > 162.5  & n<26: { 
+    dump(fp);
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>"final.bmp");
+	n := n+1;
+	reset();
+	set ( "dt",0.0625);
+set ( "population_max", 10000 );
+ecoli ( [ x := 259.8076,y := 150,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := 150,y := 259.8076,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := 0,y := 300,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := -150,y := 259.8076,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := -259.8076,y := 150,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := -300,y := 0,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := -259.8076,y := -150,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := -150,y := -259.8076,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := 0,y := -300,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := 150,y := -259.8076,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := 259.8076,y := -150,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := 300,y := 0,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+
+
+   start(),
+    t := 0;
+    j := 0;
+  }
+
+};
+ecoli ( [ x := 259.8076,y := 150,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := 150,y := 259.8076,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := 0,y := 300,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := -150,y := 259.8076,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := -259.8076,y := 150,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := -300,y := 0,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := -259.8076,y := -150,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := -150,y := -259.8076,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := 0,y := -300,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := 150,y := -259.8076,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := 259.8076,y := -150,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+ecoli ( [ x := 300,y := 0,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+
+
+

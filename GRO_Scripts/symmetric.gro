@@ -1,0 +1,140 @@
+////////////////////////////////////////////////////////////////////////////
+// 
+//   gro 
+// 
+//   Copyright (c) 2011-2012 Eric Klavins, University of Washington
+//   For more information, email klavins@uw.edu
+// 
+//   This program is free software; you can redistribute it and/or
+//   modify it under the terms of the GNU General Public License
+//   as published by the Free Software Foundation; either version 2
+//   of the License, or (at your option) any later version.
+// 
+//   This program is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//   GNU General Public License for more details.
+// 
+//   You should have received a copy of the GNU General Public License
+//   along with this program; if not, write to the Free Software
+//   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+// 
+// 
+
+include gro
+set ( "dt",0.0625);
+set ( "population_max", 10000 );
+set ( "ecoli_division_size_mean", 3.142 );
+set ( "ecoli_division_size_var", 0.01 );
+path := "./symmetric_";
+fp := fopen ( "./symmetric_datas.csv", "w" );
+
+program p(c) := {
+  rfp := 0;  
+  gfp := 0;
+  r := [ t := 0.0 , color_type := c ];
+  true : { r.t := r.t + 0.0625;}
+};
+
+
+program main() := {
+  t := 0;
+  n := 0;
+  j := 0;
+  true : { t := t + dt;
+  	   j := j+1;}
+  	     	      j = 16*150  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+        j = 16*152.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+      j = 16*155  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+          j = 16*157.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+      j = 16*160  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+          j = 16*162.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+    j = 16*165  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+          j = 16*167.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+    j = 16*170  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+          j = 16*172.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+    j = 16*175  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+          j = 16*177.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+      j = 16*180  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+            j = 16*182.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+      j = 16*185  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+            j = 16*187.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+      j = 16*190  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+            j = 16*192.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+        j = 16*195  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+            j = 16*197.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+          j = 16*200  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+            j = 16*202.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+
+  	             j = 16*205  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+    	             j = 16*207.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+    j = 16*210  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+    	             j = 16*212.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+    j = 16*215  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+    	             j = 16*217.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+    j = 16*220  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+    	             j = 16*222.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+      j = 16*225  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+    	             j = 16*227.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+      j = 16*230  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+    	             j = 16*232.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+      j = 16*235  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+    	             j = 16*237.5  :{   dump(fp );
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>".bmp");}
+  t > 237.5 & n<31: { 
+    dump(fp);
+  snapshot(path<>tostring(n)<>"for"<>tostring(t)<>"final.bmp");
+	n := n+1;
+	reset();
+	set ( "dt",0.0625);
+set ( "population_max", 10000 );
+ecoli ( [ x := 0.0,y := 0.0,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+
+
+
+   start(),
+    t := 0;
+    j := 0;
+  }
+
+};
+ecoli ( [ x := 0.0,y := 0.0,theta := rand(6283)/1000 ,volume := 2.0], program p(1) );
+
+
+
+
