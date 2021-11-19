@@ -97,4 +97,4 @@ numpoint = size(B,1)/3;
 points_d0 = reshape(B',[3,numpoint])';
 points_final = points_initial_coords+points_u;
 clearvars -except points_u points_initial_coords points_final connection_final points_d0 e_tens
-plot(points_final(:,1),points_final(:,2),'.') %% Plotting in 2D, it doesn't represent actual colony
+plot(points_final(:,1),points_final(:,2),'.') %% Plotting in 2D, it doesn't represent actual colony which is 3D
