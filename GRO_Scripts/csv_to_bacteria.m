@@ -22,3 +22,5 @@ for i = 1 :(length(indexofnans)-1)
     bacteria(:,3) = (bacteria(:,3)-1)*1e-6;
     bacteria_colonies_cell{i}=bacteria;
 end
+visualizeColony(bacteria_colonies_cell{1},0.5e-6,"true");
+set(gca, 'YDir', 'reverse');
